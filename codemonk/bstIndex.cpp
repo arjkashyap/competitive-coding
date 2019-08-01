@@ -2,29 +2,29 @@
 using namespace std;
 
 int bstInd(int index, int total, int a[]){
-    int res = 0;
-    while( index < total ){
-        res += a[index];
-        index++;
+    int res = 0, i = 0;    
+    while( i < (total - index)){
+        for(int j = 0; j <= i; j++)
+            res += a[index + j];
+        i++;
+        index += i;
     }
-    cout<<res<<endl;
     return res;
 }
 
 int main(){
-    int t, a;
+    int t, e;
     cin>>t;
     int arr[t];
     for(int i = 0; i < t; i++){
-       cin>>a;
-       arr[i] = a;
+        cin>>e;
+        arr[i] = e;
     }
-    int max = 0;
+    int ind, max = 0; 
     for(int i = 0; i < t; i++){
-        if( bstInd(i, t, arr) >= max)
-            max = bstInd(i, t, arr);
-        else
-            continue;
+        ind = bstInd(i, t, arr);
+        if(ind > max)
+            max = ind;
     }
     cout<<max<<endl;
     return 0;
