@@ -1,0 +1,6 @@
+sen = input()
+print(any(c.isalnum() for c in sen))
+print(any(c.isalpha() for c in sen))
+print(any(c.isdigit() for c in sen))
+print(any(c.islower() for c in sen))
+print(any(c.isupper() for c in sen))
