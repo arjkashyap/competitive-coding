@@ -17,21 +17,15 @@ int invertBits(int num)
 } 
 
 int seqMax(int a, int b, int c){
-   int x = a ^ b;
 
-    if ( c == 1 )
-       return a;
-   else if ( c == 2 )
-       return b;
-   else if ( c % 3 == 0 )
-       return max( x, invertBits(x) );
-    else{
-        for( int i = 1; i < c; i+=a ){
-            if( i == a)
-                return max(a, invertBits(a));
-        }
-        return max(b, invertBits(b));
-    }
+    int x = a ^ b;
+    int rem = c % 3;
+    if( c == 3 ) return max(x, invertBits(a));
+    else if ( c == 1) return a;
+    else if( c == 2 ) return b;
+    else if ( rem == 0 )  return max(x, invertBits(x));
+    else if ( rem == 1 ) return max(a, invertBits(a));
+    else return max(b, invertBits(b));
 }
 
 int main(){
