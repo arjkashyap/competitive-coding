@@ -11,6 +11,7 @@ int lenAP( int l, int r, int d, int arr[]){
             i++;
             c++;
         }
+        cout << "i: " << i << endl;
         if( c > count )
             count = c;
 
