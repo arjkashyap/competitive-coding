@@ -2,8 +2,12 @@
 using namespace std;
 
 int maxSum(int a, int b, int c){
-    if( a + b > b + c )
+    if( a + b > b + c ){
+        cout << a << " " << b << endl;
         return a + b;
+        
+    }
+    cout << b << " " << c << endl;
     return b + c;
 }
 
