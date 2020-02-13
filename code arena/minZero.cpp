@@ -25,7 +25,7 @@ int main()
                     int index = -1;
                     index = map['1'];
                     count += i - index - 1;
-                    map.erase('1');
+                    map['1'] = i;
                 }
             }
         }
