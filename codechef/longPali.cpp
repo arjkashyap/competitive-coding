@@ -6,16 +6,19 @@ int lo = 0, hi = 0;
 void checkPal(string s, int l, int r)
 {
     bool pal = true;
-    while(l < r){
-        if(s[l] != s[r]){
+    int left = l, right = r;
+    int len = 0;
+    while(left < right){
+        //cout << s[l] << " " << s[r] << endl;
+        if(s[left] != s[right]){
             pal = false;
             break;
         }
-        l++;
-        r--;
+        left++;
+        right--;
     }
     if(pal){
-        int len = (r-l) + 1;
+        len = (r-l) + 1;
         if(len > maxLen){
             maxLen = len;
             lo = l;
@@ -26,18 +29,11 @@ void checkPal(string s, int l, int r)
 
 void longestPal(string s, int l, int r)
 {
-    cout << "l: " << l << " r: " << r << endl;
     if( l > r)
         return;
     checkPal(s, l, r);
-    while( s[l] == s[r] ){
-        l++;
-        r--;
-    }
-    if (s[l] != s[r]){
-        longestPal(s, l += 1, r);
-        longestPal(s, l, r-= 1);
-    }
+    longestPal(s, l += 1, r);
+    longestPal(s, l, r-= 1);
 }
 
 int main()
@@ -48,11 +44,9 @@ int main()
     string s;
     cin >> s;
     longestPal(s, 0, n-1);
-    cout << maxLen << endl;
-    cout << lo << hi << endl;
+    cout << hi - lo + 1 << "\n";
     for(int i = lo; i <= hi; i++){
         cout << s[i];
-        cout << "umm";
     }
     cout << endl;
     return 0;
