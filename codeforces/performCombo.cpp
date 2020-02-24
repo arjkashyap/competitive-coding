@@ -19,14 +19,16 @@ int main(){
             char c = char(i);
             map[c] = 0;
         }
+        int tmp[m] = {0};
         for(int i = 0; i < n; i++){
-            int limit = miss[i];
-            for(int i = 0; i < limit; i++){
-                map[moves[i]] ++;
-            }
+            tmp[miss[i]-1]++;
         }
-        for(int i = 0; i < m; i++)
-            map[moves[i]] ++;
+        for(int i = m-2; i >= 0; i--)
+            tmp[i] += tmp[i+1];
+        for(int i = 0; i < m; i++){
+            int a = tmp[i] + 1;
+            map[moves[i]] += a;
+        }
         for(int i = 97; i < 123; i++)
             cout << map[char(i)] << " ";
         cout << endl;
