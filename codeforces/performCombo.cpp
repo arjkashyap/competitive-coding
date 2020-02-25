@@ -11,7 +11,7 @@ int main(){
         cin >> m >> n;
         char moves[m];
         int miss[n];
-        for(int i = 0; i < m; i++) 
+        for(int i = 0; i < m; i++)
             cin >> moves[i];
         for(int i = 0; i < n; i++)
             cin >> miss[i];
